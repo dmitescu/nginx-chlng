@@ -6,9 +6,14 @@ RUN apt-get install -y zlib1g
 
 WORKDIR nginx-run/
 
-COPY objs/nginx nginx
-COPY nginx.conf nginx.conf
-
 RUN mkdir -p /usr/local/nginx/logs
+RUN mkdir -p /usr/local/nginx/conf
+RUN mkdir -p /usr/website
 
-ENTRYPOINT ["nginx", "-c", "nginx.conf"]
+COPY objs/nginx nginx
+COPY conf/* /usr/local/nginx/conf/
+COPY nginx.conf /usr/local/nginx/conf/nginx.conf
+
+EXPOSE 8081
+
+ENTRYPOINT ["./nginx"]
