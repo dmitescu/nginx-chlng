@@ -17,8 +17,8 @@ pipeline {
 
 	stage('Run') {
     	    steps {
-		sh 'docker stop my-nginx'
-		sh 'docker rm my-nginx'
+		sh 'docker stop my-nginx || true'
+		sh 'docker rm my-nginx || true'
 		sh 'docker run -dit -p 8081:8081 --name my-nginx mitescugd/my-nginx:latest'
     	    }
     	}
