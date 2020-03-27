@@ -14,7 +14,7 @@ pipeline {
 		sh 'docker build . -t mitescugd/my-nginx:latest'
 	    }
 	}
-
+    }
     // 	stage('Run') {
     // 	    steps {
     // 	    }
