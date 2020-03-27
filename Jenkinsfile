@@ -22,4 +22,10 @@ pipeline {
     	    }
     	}
     }
+
+    post {
+	success {
+	    sh "curl -o /tmp/${env.BUILD_DISPLAY_NAME}_`date`_nginx.out 127.0.0.1:8081"
+	}
+    }
 }
