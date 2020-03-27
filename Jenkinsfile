@@ -26,7 +26,10 @@ pipeline {
 
     post {
 	success {
-	    sh "curl -o /tmp/${env.BUILD_DISPLAY_NAME}_`date --iso`_nginx.out my-nginx:8081 || true"
+            # Works if Jenkins is running on the same host as Docker
+	    # For the case Jenkins runs inside a Docker container
+	    # --network should be used
+	    sh "curl -o /tmp/${env.BUILD_DISPLAY_NAME}_`date --iso`_nginx.out 127.0.0.1:8081 || true"
 	}
     }
 }
