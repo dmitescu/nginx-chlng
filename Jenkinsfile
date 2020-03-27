@@ -17,7 +17,8 @@ pipeline {
 
 	stage('Run') {
     	    steps {
-		sh 'for cnt in $(docker ps -a | awk \'{print $1, $2}\' | grep mitescugd/my-nginx | awk \'{print $1}\'); do docker stop $cnt && docker rm $cnt; done'
+		sh 'docker stop my-nginx'
+		sh 'docker rm my-nginx'
 		sh 'docker run -dit -p 8081:8081 --name my-nginx mitescugd/my-nginx:latest'
     	    }
     	}
