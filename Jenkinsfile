@@ -25,7 +25,7 @@ pipeline {
 
     post {
 	success {
-	    sh "curl -o /tmp/${env.BUILD_DISPLAY_NAME}_`date`_nginx.out my-nginx:8081 || true"
+	    sh "curl -o /tmp/${env.BUILD_DISPLAY_NAME}_`date --iso`_nginx.out my-nginx:8081 || true"
 	}
     }
 }
